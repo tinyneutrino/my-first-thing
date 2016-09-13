@@ -1,44 +1,13 @@
-{% load staticfiles %}
+{% extends 'blog/base.html' %}
 
-
-<html>
-	<head>
-		<title>Nannas ting </title>
-		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-	</head>
-
-	<body>
-
-	<div class="page_header">
-		<h1><a href="/">Nannas ting </a></h1>
-		
-	</div>
-
-	
-			<h1>Blog posts:</h1>
-<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% for post in posts %}
-                <div class="post">
-                    <div class="date">
-                        <p>published: {{ post.published_date }}</p>
-                    </div>
-                    <h1><a href="">{{ post.title }}</a></h1>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-    </div>
-</div>
-	</div>
-
-		</p>
-	</body>
-
-
-</html>
+    {% endfor %}
+{% endblock content %}
